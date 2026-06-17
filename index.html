@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MailMechanic Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mac-window">
+        <div class="header">
+            <div class="top">
+                <div class="circle"><span class="red circle2"></span></div>
+                <div class="circle"><span class="yellow circle2"></span></div>
+                <div class="circle"><span class="green circle2"></span></div>
+                <div class="title"><p id="title2">💻 MailMechanic - Dashboard</p></div>
+            </div>
+            
+            <div class="domain-checker">
+                <input type="text" id="domain-input" placeholder="Run Domain Tune-Up (e.g. mycompany.com)">
+                <button class="button" id="check-domain-btn">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <div class="front">
+                        <span>Tune-Up</span>
+                    </div>
+                </button>
+                <div class="toggle-container">
+                    <span class="toggle-label">Clean</span>
+                    <div class="checkbox-wrapper-25">
+                        <input type="checkbox" id="domain-toggle">
+                    </div>
+                    <span class="toggle-label">Broken</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="dashboard">
+            <section class="left-panel">
+                <div class="card email-editor">
+                    <h2>Email Composer</h2>
+                    <div class="header-actions" style="margin-bottom: 1.5rem;">
+                        <button class="button copy-prompt-btn" id="copy-prompt-btn" style="margin-top: 0;">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <div class="front">
+                                <span>Copy Prompt</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <label for="email-subject">Subject Line</label>
+                        <input type="text" id="email-subject" placeholder="Enter your subject line here...">
+                    </div>
+                    <div class="input-group body-group">
+                        <label for="email-body">Email Body</label>
+                        <div class="editor-container">
+                            <div id="highlights-layer" class="highlights"></div>
+                            <textarea id="email-body" placeholder="Draft your cold email here... We'll highlight spam words in real-time."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="right-panel">
+                <div class="card diagnostics-panel">
+                    <h2>Diagnostics Panel</h2>
+                    
+                    <div class="diagnostic-section score-section">
+                        <h3>Deliverability Score</h3>
+                        <div class="score-loader" id="score-display-card">
+                            <span id="score-circle-bg"></span>
+                            <div class="score-text">
+                                <span id="health-score">100</span><span class="score-percent">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-section" id="spam-diagnostics">
+                        <h3>Spam-Trigger Word Scanner</h3>
+                        <ul id="spam-list" class="status-list">
+                            <li class="spam-card" style="border-left: 4px solid var(--success);">
+                                <div class="spam-img" style="background: linear-gradient(#10b981, #047857);">✅</div>
+                                <div class="spam-textBox">
+                                    <div class="spam-textContent">
+                                        <p class="spam-h1">All Clear</p>
+                                    </div>
+                                    <p class="spam-p">No spam words detected yet. Keep typing!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="diagnostic-section" id="domain-diagnostics">
+                        <h3>Domain Authentication Auditor <span id="domain-loader" class="loader hidden"></span></h3>
+                        <div id="domain-results">
+                            <p class="placeholder-text">Run a domain tune-up above to check your sending records.</p>
+                        </div>
+                    </div>
+
+                    <div class="diagnostic-section" id="ip-diagnostics">
+                        <h3>IP Blocklist Checker</h3>
+                        <ul id="ip-blocklist" class="status-list">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
